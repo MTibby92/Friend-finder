@@ -17,6 +17,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.text())
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }))
 
+// app.use('/survey', htmlRoutes)
+// app.use('/', htmlRoutes)
+
+app.use('/', function (req, res) {
+	res.sendFile(path.join(__dirname + '/app/public/home.html'))
+})
 
 // Starts the server to begin listening
 // =============================================================
