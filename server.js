@@ -3,8 +3,8 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var path = require('path')
-var htmlRoutes = require('./app/routing/html-routes.js')
-var apiRoutes = require('./app/routing/api-routes.js')
+var htmlRoutes = require('./app/routing/html-routes')
+var apiRoutes = require('./app/routing/api-routes')
 
 // Sets up the Express App
 // =============================================================
@@ -17,12 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.text())
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }))
 
-// app.use('/survey', htmlRoutes)
-// app.use('/', htmlRoutes)
-
-app.use('/', function (req, res) {
-	res.sendFile(path.join(__dirname + '/app/public/home.html'))
-})
+app.use('/', htmlRoutes)
 
 // Starts the server to begin listening
 // =============================================================
