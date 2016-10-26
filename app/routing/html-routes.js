@@ -12,6 +12,6 @@ module.exports = (function() {
 		res.sendFile(path.join(__dirname + '/../public/home.html'))
 	})
 
-	return html
+	return html;
 }) ()
 
