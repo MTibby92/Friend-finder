@@ -40,22 +40,27 @@ module.exports = (function() {
 	var api = express.Router()
 
 	api.get('/', function(req, res) {
-		res.send('some json')
+		res.json(userArr)
 	})
 
-	api.post('/api/friends', function(req, res) {
+	api.post('/', function(req, res) {
 		// res.json('test2')
 		var newUser = req.body
+		console.log('This is newUser', newUser)
 		// var userArr = require('../data/friends.js')
 		var compatArray = []
 		for (user in userArr) {
-			var otherScores = user.scores
+			var otherScores = userArr[user].scores
+			console.log('Line 54 otherScores', otherScores)
 			var compatScore = 0
 			for (score in otherScores) {
 				compatScore += Math.abs(otherScores[score] - newUser.scores[score])
+				console.log('compatScore at line 57', compatScore)
 			}
 			compatArray.push(compatScore)
 		}
+
+		console.log('Line 61, compatArray', compatArray)
 
 		var diff = compatArray[0]
 		var userIndex = 0
@@ -66,7 +71,11 @@ module.exports = (function() {
 			}
 		}
 
+		console.log('Diff is', diff)
+		console.log('userIndex is',  userIndex)
+
 		userArr.push(newUser)
+		res.json(userArr[userIndex])
 	})
 
 	return api;
