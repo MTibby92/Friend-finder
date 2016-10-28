@@ -39,7 +39,7 @@ var userArr =
 module.exports = (function() {
 	var api = express.Router()
 
-	api.get('/api/friends', function(req, res) {
+	api.get('/', function(req, res) {
 		res.send('some json')
 	})
 

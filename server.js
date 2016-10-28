@@ -3,8 +3,10 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var path = require('path')
+// var router = express.Router()
 var apiRoutes = require('./app/routing/api-routes')
 var htmlRoutes = require('./app/routing/html-routes')
+
 
 // Sets up the Express App
 // =============================================================
@@ -17,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.text())
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }))
 
-app.use('/api', apiRoutes);
+app.use('/api/friends', apiRoutes);
 app.use('/', htmlRoutes);
 
 // Starts the server to begin listening
